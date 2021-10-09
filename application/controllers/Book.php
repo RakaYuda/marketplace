@@ -3,18 +3,28 @@
 class Book extends CI_Controller
 {
     public $model;
+    public $categories;
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('book_model');
         $this->model = $this->book_model;
+        $this->categories = [
+            'judul',
+            'isbn',
+            'penulis',
+            'penerbit',
+            'tahun_terbit',
+            'halaman',
+        ];
     }
 
     public function index()
     {
         $this->model->get_rows();
         $data = array('model' => $this->model);
+        $data['categories'] = $this->categories;
         $this->load->view('book/dashboard', $data);
     }
 
@@ -37,6 +47,19 @@ class Book extends CI_Controller
         } else {
             $this->load->view('book/form', ['model' => $this->model]);
         }
+    }
+
+    public function search_book()
+    {
+        $category = $_POST['search-category'];
+
+        $this->model->$category = $_POST['search-value'];
+        $this->model->search_by_category($category);
+        $data = array('model' => $this->model);
+        $data['categories'] = $this->categories;
+        $data['category'] = $_POST['search-category'];
+        $data['value'] = $_POST['search-value'];
+        $this->load->view('book/dashboard', $data);
     }
 
     public function edit_book()

@@ -41,6 +41,29 @@ class Book_model extends CI_Model
         $this->rows = $rows;
     }
 
+    public function search_by_category($category = '')
+    {
+
+        if (strlen($category) !== 0) {
+
+            $value = $this->$category;
+
+            $sql = "SELECT * FROM buku WHERE $category LIKE '%$value%'";
+
+            $query = $this->db->query($sql);
+            $rows = array();
+            foreach ($query->result() as $row) {
+                $rows[] = $row;
+            }
+
+            $this->rows = $rows;
+
+        } else {
+            $this->rows = [];
+        }
+
+    }
+
     public function insert()
     {
         $sql = sprintf("INSERT INTO buku(judul, isbn, penulis, penerbit, tahun_terbit, halaman) VALUES('%s', '%s', '%s', '%s', '%s', '%d')",
