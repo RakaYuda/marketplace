@@ -4,6 +4,12 @@
 
 Latest updated :
 
+- Add new route (/user) dashboard
+- Implement export function
+  ![list](images/export.png)
+
+---
+
 - Add new route (/stock) dashboard implement ajax jquery for request
   ![list](images/stock-ajax.png)
   ![list](images/stock-ajax-2.png)
