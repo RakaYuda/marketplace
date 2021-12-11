@@ -52,10 +52,42 @@ class Inventory extends CI_Controller
 
     public function chart()
     {
-        // $this->model->get_rows();
-        // $data = array('model' => $this->model);
-        // $data['categories'] = $this->categories;
-        $this->load->view('storage/chart');
+        $data_tipe_count = $this->barang_model->get_count_by_tipe();
+        $data_ruang_count = $this->barang_model->get_count_by_ruang();
+
+        $data_pie_chart = (object) [
+            'label' => array_map(function ($data) {
+                return $data->nama_tipe;
+            }, $data_tipe_count),
+            'value' => array_map(function ($data) {
+                return $data->count;
+            }, $data_tipe_count),
+        ];
+
+        $data_bar_chart = (object) [
+            'label' => array_map(function ($data) {
+                return $data->nama_ruang;
+            }, $data_ruang_count),
+            'value' => array_map(function ($data) {
+                return $data->count;
+            }, $data_ruang_count),
+        ];
+
+        $data = (object) [
+            'count' => (object) [
+                'tipe' => $data_tipe_count,
+                'ruang' => $data_ruang_count,
+            ],
+            'chart' => (object) [
+                'tipe' => $data_pie_chart,
+                'ruang' => $data_bar_chart,
+            ],
+        ];
+
+        // var_dump($data);
+        // exit;
+
+        $this->load->view('storage/chart', $data);
     }
 
     public function storage_view()
@@ -71,6 +103,14 @@ class Inventory extends CI_Controller
         echo json_encode($data);
     }
 
+    public function get_all_ruang()
+    {
+        $this->load->model('ruang_model');
+        $this->ruang_model->get_rows();
+        $data = $this->ruang_model->rows;
+        echo json_encode($data);
+    }
+
     public function get_all_barang()
     {
         $this->barang_model->get_rows();
@@ -80,8 +120,7 @@ class Inventory extends CI_Controller
 
     public function get_barang()
     {
-        // $id_barang = $_GET['id_barang'];
-        $id_barang = 2;
+        $id_barang = $_GET['id_barang'];
         $this->barang_model->get_row($id_barang);
         $data = $this->barang_model->row;
         echo json_encode($data);

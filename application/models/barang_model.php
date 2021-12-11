@@ -26,6 +26,22 @@ class Barang_model extends CI_Model
         $this->row = $query->row();
     }
 
+    public function get_count_by_tipe()
+    {
+        $sql = sprintf("SELECT b.nama_tipe, COUNT(1) as count FROM barang a INNER JOIN tipe_barang b ON b.id_tipe_barang = a.tipe_barang GROUP BY tipe_barang");
+
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    public function get_count_by_ruang()
+    {
+        $sql = sprintf("SELECT b.nama_ruang, COUNT(1) as count FROM barang a INNER JOIN ruang b ON b.id_ruang = a.ruang GROUP BY ruang");
+
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     public function get_rows()
     {
         $sql = "SELECT * FROM barang ORDER BY id_barang";

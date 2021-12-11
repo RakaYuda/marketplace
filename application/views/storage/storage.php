@@ -17,7 +17,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?=base_url('assets/')?>css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this page -->
+    <link href="<?=base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,10 +34,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('/inventory')?>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Admin Inventory</div>
             </a>
 
             <!-- Divider -->
@@ -135,7 +135,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Raka Y.</span>
                                 <img class="img-profile rounded-circle" src="<?=base_url('assets/')?>img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -170,7 +170,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Inventory</h1>
                         <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#ModalAdd"><i class="fas fa-plus fa-sm text-white-50 pr-3"></i>Tambah Data</button>
                     </div>
 
@@ -282,100 +282,102 @@
 
     <!-- MODAL ADD -->
     <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Modal Add</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-horizontal">
-                <div class="modal-body">
-
-                <!-- <input type="hidden" name="id_barang" id="id_barang" value=""> -->
-                  <div class="mb-3">
-                     <label for="nama_barang" class="form-label">Nama Barang</label>
-                     <input type="text" class="form-control" name="nama_barang" id="txt_nama_barang" value="" required>
-                  </div>
-                  <div class="mb-3">
-                     <label for="tipe_barang" class="form-label">Tipe Barang</label>
-                     <input type="text" class="form-control" name="tipe_barang" id="txt_tipe_barang" value="" required>
-                  </div>
-                  <div class="mb-3">
-                     <label for="ruang" class="form-label">Ruangan</label>
-                     <input type="text" class="form-control" name="ruang" id="txt_ruang" value="" required>
-                  </div>
-
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal Add</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info" id="btn_simpan">Simpan</button>
-                </div>
-            </form>
-            </div>
-            </div>
-        </div>
-        <!--END MODAL ADD-->
-
-        <!-- MODAL EDIT -->
-        <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Modal Edit</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-horizontal">
-                <div class="modal-body">
-                  <input type="hidden" name="id_barang_edit" id="id_barang_edit" value="">
-                  <div class="mb-3">
-                     <label for="nama_barang" class="form-label">nama_barang</label>
-                     <input type="text" class="form-control" name="nama_barang_edit" id="txt_nama_barang_edit" value="" required>
-                  </div>
-                  <div class="mb-3">
-                     <label for="tipe_barang" class="form-label">tipe_barang</label>
-                     <input type="text" class="form-control" name="tipe_barang_edit" id="txt_tipe_barang_edit" value="" required>
-                  </div>
-                  <div class="mb-3">
-                     <label for="ruang" class="form-label">ruang</label>
-                     <input type="text" class="form-control" name="ruang_edit" id="txt_ruang_edit" value="" required>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                    <button class="btn btn-info" id="btn_update">Update</button>
-                </div>
-            </form>
-            </div>
-            </div>
-        </div>
-        <!--END MODAL EDIT-->
-
-        <!--MODAL HAPUS-->
-        <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Modal Hapus</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                    <form class="form-horizontal">
+                <form class="form-horizontal">
                     <div class="modal-body">
 
-                            <input type="hidden" name="id_barang" id="id_barang" value="">
-                            <div class="alert alert-warning"><p>Apakah Anda yakin mau menghapus barang ini?</p></div>
+                        <!-- <input type="hidden" name="id_barang" id="id_barang" value=""> -->
+                        <div class="mb-3">
+                            <label for="nama_barang" class="form-label">Nama Barang</label>
+                            <input type="text" class="form-control" name="nama_barang" id="txt_nama_barang" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipe_barang" class="form-label">Tipe Barang</label>
+                            <input type="text" class="form-control" name="tipe_barang" id="txt_tipe_barang" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ruang" class="form-label">Ruangan</label>
+                            <input type="text" class="form-control" name="ruang" id="txt_ruang" value="" required>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                        <button class="btn btn-info" id="btn_simpan">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL ADD-->
+
+    <!-- MODAL EDIT -->
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-horizontal">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_barang_edit" id="id_barang_edit" value="">
+                        <div class="mb-3">
+                            <label for="nama_barang" class="form-label">nama_barang</label>
+                            <input type="text" class="form-control" name="nama_barang_edit" id="txt_nama_barang_edit" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipe_barang" class="form-label">tipe_barang</label>
+                            <input type="text" class="form-control" name="tipe_barang_edit" id="txt_tipe_barang_edit" value="" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ruang" class="form-label">ruang</label>
+                            <input type="text" class="form-control" name="ruang_edit" id="txt_ruang_edit" value="" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                        <button class="btn btn-info" id="btn_update">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL EDIT-->
+
+    <!--MODAL HAPUS-->
+    <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal Hapus</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-horizontal">
+                    <div class="modal-body">
+
+                        <input type="hidden" name="id_barang" id="id_barang" value="">
+                        <div class="alert alert-warning">
+                            <p>Apakah Anda yakin mau menghapus barang ini?</p>
+                        </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-bs-dismiss="modal">Tutup</button>
                         <button type="button" class="btn_hapus btn btn-danger" id="btn_hapus">Hapus</button>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-        <!--END MODAL HAPUS-->
+    </div>
+    <!--END MODAL HAPUS-->
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?=base_url('assets/')?>vendor/jquery/jquery.min.js"></script>
@@ -395,169 +397,211 @@
     <script src="<?=base_url('assets/')?>js/demo/chart-area-demo.js"></script>
     <script src="<?=base_url('assets/')?>js/demo/chart-pie-demo.js"></script>
 
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="<?=base_url('assets/')?>vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?=base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript">
-      var deleteModal = new bootstrap.Modal(document.getElementById('ModalHapus'), {
-         keyboard: false
-      })
-      var editModal = new bootstrap.Modal(document.getElementById('ModalEdit'), {
-         keyboard: false
-      })
-      var addModal = new bootstrap.Modal(document.getElementById('ModalAdd'), {
-         keyboard: false
-      })
+        var deleteModal = new bootstrap.Modal(document.getElementById('ModalHapus'), {
+            keyboard: false
+        })
+        var editModal = new bootstrap.Modal(document.getElementById('ModalEdit'), {
+            keyboard: false
+        })
+        var addModal = new bootstrap.Modal(document.getElementById('ModalAdd'), {
+            keyboard: false
+        })
 
-       $(document).ready(function(){
-        $('#dataTable_inventory').DataTable();
+        $(document).ready(function() {
+            let dataRuang = [];
+            let dataTipeBarang = [];
 
-        tampil_data_barang();
+            tampil_data_tipe();
+            tampil_data_ruang();
 
-        function tampil_data_barang(){
-            $.ajax({
-                type  : 'GET',
-                url   : '<?php echo base_url() ?>inventory/get_all_barang',
-                async : true,
-                dataType : 'json',
-                success : function(data){
-                    var html = '';
-                    var i;
-                    console.log(data)
-                    for(i=0; i<data.length; i++){
-                        html += '<tr>'+
-                                 '<td>' + (i+1) + '</td>'+
-                                 '<td>'+data[i].id_barang+'</td>'+
-                                 '<td>'+data[i].nama_barang+'</td>'+
-                                 '<td>'+data[i].tipe_barang+'</td>'+
-                                 '<td>'+data[i].ruang+'</td>'+
-                                 '<td style="text-align:left;">'+
-                                 '<button type="button" class="btn btn-primary ml-1 item_edit" data-toggle="modal" data-target="#ModalEdit" data="'+data[i].id_barang+'">Edit</button>'+
-                                 '<button type="button" class="btn btn-outline-danger ml-1 item_hapus" data-toggle="modal" data-target="#ModalHapus" data="'+data[i].id_barang+'">Hapus</button>'+
-                                 '</td>'+
-                                 '</tr>';
+            tampil_data_barang();
+
+
+            function tampil_data_barang() {
+                $.ajax({
+                    type: 'GET',
+                    url: '<?php echo base_url() ?>inventory/get_all_barang',
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        var html = '';
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<tr>' +
+                                '<td>' + (i + 1) + '</td>' +
+                                '<td>' + data[i].id_barang + '</td>' +
+                                '<td>' + data[i].nama_barang + '</td>' +
+                                '<td>' + dataTipeBarang.find((tipe) => tipe.id_tipe_barang === data[i].tipe_barang).nama_tipe + '</td>' +
+                                '<td>' + dataRuang.find((ruang) => ruang.id_ruang === data[i].ruang).nama_ruang + '</td>' +
+                                '<td style="text-align:left;">' +
+                                '<button type="button" class="btn btn-primary ml-1 item_edit" data-toggle="modal" data-target="#ModalEdit" data="' + data[i].id_barang + '">Edit</button>' +
+                                '<button type="button" class="btn btn-outline-danger ml-1 item_hapus" data-toggle="modal" data-target="#ModalHapus" data="' + data[i].id_barang + '">Hapus</button>' +
+                                '</td>' +
+                                '</tr>';
+                        }
+                        $('#table_inventory').html(html);
+                        $('#dataTable_inventory').DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copy', 'csv', 'excel', 'pdf', 'print'
+                            ]
+                        });
+                    },
+                    error: function(err) {
+                        console.log(err)
                     }
-                    $('#table_inventory').html(html);
-                },
-                error : function (err){
-                   console.log(err)
-                }
+                });
+            }
 
+            function tampil_data_tipe() {
+                $.ajax({
+                    type: 'GET',
+                    url: '<?php echo base_url() ?>inventory/get_all_tipe',
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        dataTipeBarang = data;
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                });
+            }
+
+            function tampil_data_ruang() {
+                $.ajax({
+                    type: 'GET',
+                    url: '<?php echo base_url() ?>inventory/get_all_ruang',
+                    async: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        dataRuang = data;
+                    },
+                    error: function(err) {
+                        console.log(err)
+                    }
+                });
+            }
+
+            //Tambah Barang
+            $('#btn_simpan').on('click', function() {
+                // var id_barang = $('#id_barang').val();
+                var nama_barang = $('#txt_nama_barang').val();
+                var tipe_barang = $('#txt_tipe_barang').val();
+                var ruang = $('#txt_ruang').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('inventory/add_barang') ?>",
+                    dataType: "JSON",
+                    data: {
+                        //   id: id,
+                        nama_barang: nama_barang,
+                        tipe_barang: tipe_barang,
+                        ruang: ruang,
+                    },
+                    success: function(data) {
+                        $('[name="nama_barang"]').val("");
+                        $('[name="tipe_barang"]').val("");
+                        $('[name="ruang"]').val("");
+                        $('#ModalAdd').modal('hide');
+                        tampil_data_barang();
+                    }
+                });
+                return false;
             });
-        }
 
-        //Tambah Barang
-        $('#btn_simpan').on('click',function(){
-            // var id_barang = $('#id_barang').val();
-            var nama_barang = $('#txt_nama_barang').val();
-            var tipe_barang = $('#txt_tipe_barang').val();
-            var ruang = $('#txt_ruang').val();
-
-            $.ajax({
-                type : "POST",
-                url  : "<?php echo base_url('inventory/add_barang') ?>",
-                dataType : "JSON",
-                data : {
-                //   id: id,
-                  nama_barang: nama_barang,
-                  tipe_barang: tipe_barang,
-                  ruang: ruang,
-               },
-               success: function(data){
-                  $('[name="nama_barang"]').val("");
-                  $('[name="tipe_barang"]').val("");
-                  $('[name="ruang"]').val("");
-                  $('#ModalAdd').modal('hide');
-                  tampil_data_barang();
-               }
+            //GET UPDATE
+            $('#table_inventory').on('click', '.item_edit', function() {
+                var id_barang = $(this).attr('data');
+                $('#ModalEdit').modal('show');
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo base_url('inventory/get_barang') ?>",
+                    dataType: "JSON",
+                    data: {
+                        id_barang: id_barang
+                    },
+                    success: function(data) {
+                        console.log(data)
+                        $.each(data, function(id_barang, nama_barang, tipe_barang, ruang) {
+                            $('[name="id_barang_edit"]').val(data.id_barang);
+                            $('[name="nama_barang_edit"]').val(data.nama_barang);
+                            $('[name="tipe_barang_edit"]').val(data.tipe_barang);
+                            $('[name="ruang_edit"]').val(data.ruang);
+                        });
+                    }
+                });
+                return false;
             });
-            return false;
-        });
 
-        //GET UPDATE
-        $('#table_inventory').on('click','.item_edit',function(){
-            var id_barang=$(this).attr('data');
-            $('#ModalEdit').modal('show');
-            $.ajax({
-                type : "GET",
-                url  : "<?php echo base_url('inventory/get_barang') ?>",
-                dataType : "JSON",
-                data : {
-                    id_barang:id_barang
-               },
-                success: function(data){
-                   console.log(data)
-                    $.each(data,function(id_barang, nama_barang, tipe_barang, ruang){
-                        $('[name="id_barang_edit"]').val(data.id_barang);
-                        $('[name="nama_barang_edit"]').val(data.nama_barang);
-                        $('[name="tipe_barang_edit"]').val(data.tipe_barang);
-                        $('[name="ruang_edit"]').val(data.ruang);
-                    });
-                }
+            //Update Barang
+            $('#btn_update').on('click', function() {
+                var id_barang = $('#id_barang_edit').val();
+                var nama_barang = $('#txt_nama_barang_edit').val();
+                var tipe_barang = $('#txt_tipe_barang_edit').val();
+                var ruang = $('#txt_ruang_edit').val();
+                // console.log(judul)
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('inventory/update_barang') ?>",
+                    dataType: "JSON",
+                    data: {
+                        id_barang: id_barang,
+                        nama_barang: nama_barang,
+                        tipe_barang: tipe_barang,
+                        ruang: ruang,
+                    },
+                    success: function(data) {
+                        $('[name="id_barang_edit"]').val("");
+                        $('[name="nama_barang_edit"]').val("");
+                        $('[name="tipe_barang_edit"]').val("");
+                        $('[name="ruang_edit"]').val("");
+                        $('#ModalEdit').modal('hide');
+                        tampil_data_barang();
+                    }
+                });
+                return false;
             });
-            return false;
-        });
 
-        //Update Barang
-        $('#btn_update').on('click',function(){
-            var id_barang = $('#id_barang_edit').val();
-            var nama_barang = $('#txt_nama_barang_edit').val();
-            var tipe_barang = $('#txt_tipe_barang_edit').val();
-            var ruang = $('#txt_ruang_edit').val();
-            // console.log(judul)
-            $.ajax({
-                type : "POST",
-                url  : "<?php echo base_url('inventory/update_barang') ?>",
-                dataType : "JSON",
-                data : {
-                  id_barang: id_barang,
-                  nama_barang: nama_barang,
-                  tipe_barang: tipe_barang,
-                  ruang: ruang,
-               },
-                success: function(data){
-                     $('[name="id_barang_edit"]').val("");
-                     $('[name="nama_barang_edit"]').val("");
-                     $('[name="tipe_barang_edit"]').val("");
-                     $('[name="ruang_edit"]').val("");
-                     $('#ModalEdit').modal('hide');
-                    tampil_data_barang();
-                }
+            //GET HAPUS
+            $('#table_inventory').on('click', '.item_hapus', function() {
+                console.log("hapus clicked")
+                var id_barang = $(this).attr('data');
+                // console.log(id_buku);
+                $('[name="id_barang"]').val(id_barang);
             });
-            return false;
+
+            //Hapus Barang
+            $('#btn_hapus').on('click', function() {
+                var id_barang = $('#id_barang').val();
+                // var id_buku = $(this).attr('data');
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('inventory/delete_barang') ?>",
+                    dataType: "JSON",
+                    data: {
+                        id_barang: id_barang
+                    },
+                    success: function(data) {
+                        // $('#ModalHapus').modal('hide');
+                        console.log(data)
+                        $('#ModalHapus').modal('hide');
+                        tampil_data_barang();
+                    }
+                });
+                return false;
+            });
+
         });
-
-        //GET HAPUS
-        $('#table_inventory').on('click','.item_hapus',function(){
-            console.log("hapus clicked")
-            var id_barang = $(this).attr('data');
-            // console.log(id_buku);
-            $('[name="id_barang"]').val(id_barang);
-        });
-
-        //Hapus Barang
-        $('#btn_hapus').on('click',function(){
-            var id_barang = $('#id_barang').val();
-            // var id_buku = $(this).attr('data');
-               $.ajax({
-               type : "POST",
-               url  : "<?php echo base_url('inventory/delete_barang') ?>",
-               dataType : "JSON",
-               data : {
-                id_barang: id_barang
-               },
-               success: function(data){
-                     // $('#ModalHapus').modal('hide');
-                     console.log(data)
-                     $('#ModalHapus').modal('hide');
-                     tampil_data_barang();
-                  }
-               });
-            return false;
-         });
-
-    });
-
-   </script>
+    </script>
 
 </body>
 
