@@ -184,8 +184,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                     <div class="dropdown-header">List Action:</div>
-                                    <a class="dropdown-item" href="#">Generate Report Excel </a>
-                                    <a class="dropdown-item" href="#">Generate Report PDF</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('inventory/export_excel') ?>">Generate Report Excel </a>
+                                    <a class="dropdown-item" href="<?php echo base_url('inventory/print_pdf') ?>">Generate Report PDF</a>
                                     <!-- <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a> -->
                                 </div>
@@ -244,7 +244,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Raka Y. 2021</span>
                     </div>
                 </div>
             </footer>
@@ -286,7 +286,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal Add</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <form class="form-horizontal">
                     <div class="modal-body">
@@ -296,15 +298,40 @@
                             <label for="nama_barang" class="form-label">Nama Barang</label>
                             <input type="text" class="form-control" name="nama_barang" id="txt_nama_barang" value="" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="tipe_barang" class="form-label">Tipe Barang</label>
-                            <input type="text" class="form-control" name="tipe_barang" id="txt_tipe_barang" value="" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="ruang" class="form-label">Ruangan</label>
-                            <input type="text" class="form-control" name="ruang" id="txt_ruang" value="" required>
+                            <label for="exampleFormControlSelect1">Tipe Barang</label><select class="form-control" name="tipe_barang" id="txt_tipe_barang">
+                                <?php
+foreach ($tipe as $row) {
+    echo "<option value=" . $row->id_tipe_barang . " >" . $row->nama_tipe . "</option>";
+}
+?>
+
+                            </select>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="exampleFormControlSelect1">Ruangan</label><select class="form-control" name="ruang" id="txt_ruang">
+                                <?php
+foreach ($ruang as $row) {
+    echo "<option value=" . $row->id_ruang . " >" . $row->nama_ruang . "</option>";
+}
+?>
+
+                            </select>
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="exampleFormControlSelect1">Tipe Barang</label>
+                            <div class="form-check">
+                                <input class="form-check-input" id="flexRadioDefault1" type="radio" name="flexRadioDefault">
+                                <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" id="flexRadioDefault2" type="radio" name="flexRadioDefault" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
+                            </div>
+                        </div> -->
                     </div>
 
                     <div class="modal-footer">
@@ -323,23 +350,40 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <form class="form-horizontal">
                     <div class="modal-body">
                         <input type="hidden" name="id_barang_edit" id="id_barang_edit" value="">
                         <div class="mb-3">
-                            <label for="nama_barang" class="form-label">nama_barang</label>
+                            <label for="nama_barang" class="form-label">Nama Barang</label>
                             <input type="text" class="form-control" name="nama_barang_edit" id="txt_nama_barang_edit" value="" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="tipe_barang" class="form-label">tipe_barang</label>
-                            <input type="text" class="form-control" name="tipe_barang_edit" id="txt_tipe_barang_edit" value="" required>
+                            <label for="exampleFormControlSelect1">Tipe Barang</label><select class="form-control" name="tipe_barang_edit" id="txt_tipe_barang_edit">
+                                <?php
+foreach ($tipe as $row) {
+    echo "<option value=" . $row->id_tipe_barang . " >" . $row->nama_tipe . "</option>";
+}
+?>
+
+                            </select>
                         </div>
+
                         <div class="mb-3">
-                            <label for="ruang" class="form-label">ruang</label>
-                            <input type="text" class="form-control" name="ruang_edit" id="txt_ruang_edit" value="" required>
+                            <label for="exampleFormControlSelect1">Ruangan</label><select class="form-control" name="ruang_edit" id="txt_ruang_edit">
+                                <?php
+foreach ($ruang as $row) {
+    echo "<option value=" . $row->id_ruang . " >" . $row->nama_ruang . "</option>";
+}
+?>
+
+                            </select>
                         </div>
+
                     </div>
 
                     <div class="modal-footer">
@@ -358,7 +402,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal Hapus</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
                 <form class="form-horizontal">
                     <div class="modal-body">
@@ -447,12 +493,7 @@
                                 '</tr>';
                         }
                         $('#table_inventory').html(html);
-                        $('#dataTable_inventory').DataTable({
-                            dom: 'Bfrtip',
-                            buttons: [
-                                'copy', 'csv', 'excel', 'pdf', 'print'
-                            ]
-                        });
+                        $('#dataTable_inventory').DataTable();
                     },
                     error: function(err) {
                         console.log(err)

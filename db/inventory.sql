@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 10 Des 2021 pada 15.23
+-- Waktu pembuatan: 11 Des 2021 pada 14.32
 -- Versi server: 5.7.32
 -- Versi PHP: 7.4.12
 
@@ -39,7 +39,10 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `tipe_barang`, `ruang`) VALUES
 (1, 'Lampu A1 Kamar Mandi', 2, 1),
-(2, 'Lampu A2 Kamar Mandi', 2, 2);
+(2, 'Lampu A2 Kamar Mandi', 2, 2),
+(4, 'Lampu A3 Perpustakaan', 3, 3),
+(6, 'Sapu', 1, 1),
+(7, 'Dispenser A3 Perpustakaan', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +117,7 @@ ALTER TABLE `tipe_barang`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `ruang`
