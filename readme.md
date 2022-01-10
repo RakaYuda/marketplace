@@ -1,11 +1,17 @@
-## Simply crud project built with CodeIgniter and Mysql
+## Marketplace project built with CodeIgniter and Mysql
 
 ---
 
 Latest updated :
 
 - Add new route dashboard
-- Implement export function
-  ![list](images/ss-app.png)
+- Implement admin
+  ![list](images/ss-admin.png)
+- Login User
+  ![list](images/ss-login.png)
+- Register User
+  ![list](images/ss-register.png)
+- Implement admin
+  ![list](images/ss-admin.png)
 
 ---

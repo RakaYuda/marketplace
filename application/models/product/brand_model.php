@@ -1,9 +1,8 @@
-
 <?php
-class Tipe_barang_model extends CI_Model
+class Brand_model extends CI_Model
 {
-    public $id_tipe_barang;
-    public $nama_tipe;
+    public $id_brand;
+    public $name_brand;
     public $rows;
     public $row;
 
@@ -18,7 +17,7 @@ class Tipe_barang_model extends CI_Model
 
     public function get_row($id)
     {
-        $sql = sprintf("SELECT * FROM tipe_barang WHERE id_tipe_barang='%s'", $id);
+        $sql = sprintf("SELECT * FROM mp_brand WHERE id_brand='%s'", $id);
 
         $query = $this->db->query($sql);
         $this->row = $query->row();
@@ -26,7 +25,7 @@ class Tipe_barang_model extends CI_Model
 
     public function get_rows()
     {
-        $sql = "SELECT * FROM tipe_barang ORDER BY id_tipe_barang";
+        $sql = "SELECT * FROM mp_brand ORDER BY id_brand";
 
         $query = $this->db->query($sql);
         $rows = array();
@@ -39,8 +38,8 @@ class Tipe_barang_model extends CI_Model
 
     public function insert()
     {
-        $sql = sprintf("INSERT INTO tipe_barang(nama_tipe) VALUES('%s')",
-            $this->nama_tipe,
+        $sql = sprintf("INSERT INTO mp_brand(name_brand) VALUES('%s')",
+            $this->name_brand,
         );
 
         $this->db->query($sql);
@@ -48,9 +47,9 @@ class Tipe_barang_model extends CI_Model
 
     public function update()
     {
-        $sql = sprintf("UPDATE tipe_barang SET nama_tipe='%s' WHERE id_tipe_barang='%d' ",
-            $this->nama_ruanama_tipeng,
-            $this->id_tipe_barang
+        $sql = sprintf("UPDATE mp_brand SET name_brand='%s' WHERE id_brand='%d' ",
+            $this->name_brand,
+            $this->id_brand
         );
         #echo $sql; exit;
 
@@ -59,15 +58,15 @@ class Tipe_barang_model extends CI_Model
 
     public function delete($id)
     {
-        $sql = sprintf("DELETE FROM tipe_barang WHERE id_tipe_barang='%d'", $id);
+        $sql = sprintf("DELETE FROM mp_brand WHERE id_brand='%s'", $id);
         $this->db->query($sql);
     }
 
     public function _attributeLabels()
     {
         return [
-            'id_tipe_barang' => 'id_tipe_barang: ',
-            'nama_tipe' => 'nama_tipe: ',
+            'id_brand' => 'id_brand: ',
+            'name_brand' => 'name_brand: ',
         ];
     }
 }

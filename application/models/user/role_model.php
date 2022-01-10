@@ -1,9 +1,8 @@
-
 <?php
-class Ruang_model extends CI_Model
+class Role_model extends CI_Model
 {
-    public $id_ruang;
-    public $nama_ruang;
+    public $id_role;
+    public $name_role;
     public $rows;
     public $row;
 
@@ -18,7 +17,7 @@ class Ruang_model extends CI_Model
 
     public function get_row($id)
     {
-        $sql = sprintf("SELECT * FROM ruang WHERE id_ruang='%s'", $id);
+        $sql = sprintf("SELECT * FROM mp_brand WHERE id_brand='%s'", $id);
 
         $query = $this->db->query($sql);
         $this->row = $query->row();
@@ -26,7 +25,7 @@ class Ruang_model extends CI_Model
 
     public function get_rows()
     {
-        $sql = "SELECT * FROM ruang ORDER BY id_ruang";
+        $sql = "SELECT * FROM mp_brand ORDER BY id_brand";
 
         $query = $this->db->query($sql);
         $rows = array();
@@ -39,8 +38,8 @@ class Ruang_model extends CI_Model
 
     public function insert()
     {
-        $sql = sprintf("INSERT INTO ruang(nama_ruang) VALUES('%s')",
-            $this->nama_ruang,
+        $sql = sprintf("INSERT INTO mp_brand(name_brand) VALUES('%s')",
+            $this->name_brand,
         );
 
         $this->db->query($sql);
@@ -48,9 +47,9 @@ class Ruang_model extends CI_Model
 
     public function update()
     {
-        $sql = sprintf("UPDATE ruang SET nama_ruang='%s' WHERE id_ruang='%d' ",
-            $this->nama_ruang,
-            $this->id_barang
+        $sql = sprintf("UPDATE mp_brand SET name_brand='%s' WHERE id_brand='%d' ",
+            $this->name_brand,
+            $this->id_brand
         );
         #echo $sql; exit;
 
@@ -59,15 +58,15 @@ class Ruang_model extends CI_Model
 
     public function delete($id)
     {
-        $sql = sprintf("DELETE FROM ruang WHERE id_ruang='%d'", $id);
+        $sql = sprintf("DELETE FROM mp_brand WHERE id_brand='%s'", $id);
         $this->db->query($sql);
     }
 
     public function _attributeLabels()
     {
         return [
-            'id_ruang' => 'id_ruang: ',
-            'nama_ruang' => 'nama_ruang: ',
+            'id_brand' => 'id_brand: ',
+            'name_brand' => 'name_brand: ',
         ];
     }
 }
