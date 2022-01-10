@@ -14,6 +14,6 @@ Latest updated :
 - Implement Chart
   ![list](images/ss-chart.png)
 - Implement Export Menu
-  ![list](images/ss-admin.png)
+  ![list](images/ss-export-menu.png)
 
 ---
